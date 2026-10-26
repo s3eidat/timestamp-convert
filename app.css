@@ -1,0 +1,18 @@
+.sr { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+.ts-grid { align-items: start; }
+.ts-now { text-align: left; cursor: pointer; transition: border-color var(--dur); min-width: 0; }
+.ts-now:hover { border-color: var(--accent); }
+.ts-now b { font-family: var(--mono); font-size: 22px; overflow-wrap: anywhere; }
+.ts-iso b { font-size: 17px; line-height: 1.6; }
+.ts-big { font-size: 18px; }
+.ts-nowbtn { align-self: end; height: 46px; }
+.ts-tbl th { width: 34%; text-transform: none; letter-spacing: 0; font-size: 12.5px; vertical-align: middle; }
+.ts-tbl td { overflow-wrap: anywhere; font-size: 13px; }
+.ts-tbl thead th { width: auto; text-transform: uppercase; letter-spacing: .04em; font-size: 12px; }
+.ts-tbl tr:last-child > * { border-bottom: 0; }
+.ts-c { width: 44px; text-align: right; padding-top: 4px !important; padding-bottom: 4px !important; }
+.ts-bad { color: var(--danger); }
+.ts-you { margin-left: 8px; padding: 1px 8px; font-size: 11px; }
+.ts-add { width: auto; max-width: 260px; }
+#zones td:first-child { white-space: nowrap; }
+@media (max-width: 560px) { #zones td:nth-child(3), .ts-tbl thead th:nth-child(3) { display: none; } #zones td:first-child { white-space: normal; } }

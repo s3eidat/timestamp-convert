@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; font-src 'self'; media-src 'self' data: blob:; connect-src 'self' data: blob:; worker-src 'self' blob:; manifest-src 'self'; form-action 'none'; base-uri 'none'; object-src 'none'">
+<meta name="referrer" content="no-referrer">
+<title>Timestamp Convert — Unix Time to Date and Back, Any Timezone | S3eidat Tools</title>
+<meta name="description" content="Live Unix time, convert epoch seconds, milliseconds, microseconds or nanoseconds to ISO, UTC, local and any timezone, and turn a date back into a Unix timestamp. Free, private, works offline.">
+<meta property="og:title" content="Timestamp Convert — Unix time to dates and back">
+<meta property="og:description" content="Epoch converter with auto-detected units and any timezone. Runs 100% in your browser.">
+<meta property="og:image" content="screenshot.png">
+<link rel="icon" href="kit/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="kit/kit.css">
+<link rel="stylesheet" href="app.css">
+<script src="kit/kit.js"></script>
+</head>
+<body data-tool="timestamp-convert">
+<main class="s3-main">
+  <section class="s3-hero">
+    <h1>Timestamp Convert</h1>
+    <p>Unix time to human dates and back. Seconds, milliseconds, microseconds or nanoseconds are detected for you, in any timezone.</p>
+  </section>
+
+  <section class="card">
+    <div class="row between">
+      <h2>Current Unix time</h2>
+      <button class="btn ghost small" id="pause" aria-pressed="false"><svg class="i"><use href="#i-pause"/></svg><span>Pause</span></button>
+    </div>
+    <div class="stats">
+      <button class="stat ts-now" id="nowS" title="Copy seconds"><b>—</b><span>seconds · click to copy</span></button>
+      <button class="stat ts-now" id="nowMs" title="Copy milliseconds"><b>—</b><span>milliseconds · click to copy</span></button>
+      <button class="stat ts-now ts-iso" id="nowIso" title="Copy ISO 8601"><b>—</b><span>ISO 8601 (UTC) · click to copy</span></button>
+    </div>
+  </section>
+
+  <div class="grid-2 ts-grid mt">
+    <section class="card stack">
+      <h2>Timestamp → date</h2>
+      <div class="row">
+        <label class="field grow">Unix timestamp
+          <input class="input mono ts-big" id="ts" inputmode="decimal" spellcheck="false" autocomplete="off" placeholder="1700000000">
+        </label>
+        <button class="btn ts-nowbtn" id="useNow">Now</button>
+      </div>
+      <div class="row between">
+        <div class="seg" id="unit" role="group" aria-label="Unit">
+          <button aria-pressed="true" data-v="auto">Auto</button>
+          <button aria-pressed="false" data-v="s">s</button>
+          <button aria-pressed="false" data-v="ms">ms</button>
+          <button aria-pressed="false" data-v="us">µs</button>
+          <button aria-pressed="false" data-v="ns">ns</button>
+        </div>
+        <span class="chip" id="unitChip">—</span>
+      </div>
+      <div class="tbl-wrap"><table class="tbl ts-tbl"><tbody id="outRows"></tbody></table></div>
+    </section>
+
+    <section class="card stack">
+      <h2>Date → timestamp</h2>
+      <label class="field">Date and time
+        <input class="input" id="dt" type="datetime-local" step="1">
+      </label>
+      <label class="field">Interpret it in
+        <select class="select" id="dtZone"></select>
+      </label>
+      <label class="field">…or type any date
+        <input class="input" id="dtText" spellcheck="false" autocomplete="off" placeholder="2026-10-26T14:30:00Z or Oct 26 2026 14:30 GMT+3">
+      </label>
+      <div class="tbl-wrap"><table class="tbl ts-tbl"><tbody id="backRows"></tbody></table></div>
+    </section>
+  </div>
+
+  <section class="card mt stack">
+    <div class="row between">
+      <h2>Around the world <small>for the timestamp above</small></h2>
+      <div class="row">
+        <label class="sr" for="addZone">Add a timezone</label>
+        <select class="select ts-add" id="addZone"><option value="">Add a timezone…</option></select>
+      </div>
+    </div>
+    <div class="tbl-wrap"><table class="tbl ts-tbl"><thead><tr><th>Timezone</th><th>Date &amp; time</th><th>Offset</th><th></th></tr></thead><tbody id="zones"></tbody></table></div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
